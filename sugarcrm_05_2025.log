@@ -1,0 +1,11 @@
+05/26/25 06:18:53 [1720][-none-][FATAL] SECURITY: User authentication for checker failed
+05/26/25 06:18:54 [1720][-none-][FATAL] FAILED LOGIN:attempts[1] - checker
+05/26/25 06:20:51 [1720][-none-][FATAL] SECURITY: User authentication for checker failed
+05/26/25 06:20:51 [1720][-none-][FATAL] FAILED LOGIN:attempts[2] - checker
+05/26/25 06:27:38 [1720][-none-][FATAL] SECURITY: User authentication for mamta failed
+05/26/25 06:27:39 [1720][-none-][FATAL] FAILED LOGIN:attempts[3] - mamta
+05/26/25 06:28:02 [1720][-none-][FATAL] SECURITY: User authentication for mamta failed
+05/26/25 06:28:03 [1720][-none-][FATAL] FAILED LOGIN:attempts[4] - mamta
+05/26/25 06:32:49 [1720][-none-][FATAL] SECURITY: User authentication for mamta failed
+05/26/25 06:32:49 [1720][-none-][FATAL] FAILED LOGIN:attempts[10] - mamta
+05/26/25 06:33:46 [1720][-none-][FATAL] SECURITY: User authentication for mamta failed

@@ -1,0 +1,123 @@
+<?php
+$viewdefs ['ProjectTask'] = 
+array (
+  'EditView' => 
+  array (
+    'templateMeta' => 
+    array (
+      'maxColumns' => '2',
+      'widths' => 
+      array (
+        0 => 
+        array (
+          'label' => '10',
+          'field' => '30',
+        ),
+        1 => 
+        array (
+          'label' => '10',
+          'field' => '30',
+        ),
+      ),
+      'useTabs' => true,
+      'tabDefs' => 
+      array (
+        'DEFAULT' => 
+        array (
+          'newTab' => true,
+          'panelDefault' => 'expanded',
+        ),
+      ),
+    ),
+    'panels' => 
+    array (
+      'DEFAULT' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            'name' => 'name',
+            'label' => 'LBL_NAME',
+          ),
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'date_start',
+            'label' => 'LBL_DATE_START',
+          ),
+          1 => 
+          array (
+            'name' => 'date_finish',
+            'label' => 'LBL_DATE_FINISH',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'percent_complete',
+            'label' => 'LBL_PERCENT_COMPLETE',
+          ),
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'priority',
+            'label' => 'LBL_PRIORITY',
+          ),
+          1 => 
+          array (
+            'name' => 'milestone_flag',
+            'label' => 'LBL_MILESTONE_FLAG',
+          ),
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
+            'name' => 'project_name',
+            'label' => 'LBL_PROJECT_NAME',
+          ),
+        ),
+        5 => 
+        array (
+          0 => 
+          array (
+            'name' => 'description',
+            'displayParams' => 
+            array (
+              'rows' => '8',
+              'cols' => '60',
+            ),
+            'label' => 'LBL_DESCRIPTION',
+          ),
+        ),
+        6 => 
+        array (
+          0 => 
+          array (
+            'name' => 'duration',
+            'hideLabel' => true,
+            'customCode' => '<input type="hidden" name="duration" id="projectTask_duration" value="0" />',
+            'label' => 'LBL_DURATION',
+          ),
+        ),
+        7 => 
+        array (
+          0 => 
+          array (
+            'name' => 'duration_unit',
+            'hideLabel' => true,
+            'customCode' => '<input type="hidden" name="duration_unit" id="projectTask_durationUnit" value="Days" />',
+            'label' => 'LBL_DURATION_UNIT',
+          ),
+        ),
+      ),
+    ),
+  ),
+);
+?>

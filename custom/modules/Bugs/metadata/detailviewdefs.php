@@ -1,0 +1,241 @@
+<?php
+$viewdefs ['Bugs'] = 
+array (
+  'DetailView' => 
+  array (
+    'templateMeta' => 
+    array (
+      'form' => 
+      array (
+        'buttons' => 
+        array (
+          0 => 'EDIT',
+          1 => 'DUPLICATE',
+          2 => 'DELETE',
+          3 => 
+          array (
+            'customCode' => '<input title="{$APP.LBL_DUP_MERGE}"                     accesskey="M"                     class="button"                     onclick="this.form.return_module.value=\'Bugs\';this.form.return_action.value=\'DetailView\';this.form.return_id.value=\'{$fields.id.value}\'; this.form.action.value=\'Step1\'; this.form.module.value=\'MergeRecords\';"                     name="button"                     value="{$APP.LBL_DUP_MERGE}"                     type="submit">',
+          ),
+        ),
+      ),
+      'maxColumns' => '2',
+      'widths' => 
+      array (
+        0 => 
+        array (
+          'label' => '10',
+          'field' => '30',
+        ),
+        1 => 
+        array (
+          'label' => '10',
+          'field' => '30',
+        ),
+      ),
+      'useTabs' => false,
+      'tabDefs' => 
+      array (
+        'DEFAULT' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
+      ),
+    ),
+    'panels' => 
+    array (
+      'default' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            'name' => 'assigned_user_name',
+            'label' => 'LBL_ASSIGNED_TO_NAME',
+          ),
+          1 => 
+          array (
+            'name' => 'bug_number',
+            'label' => 'LBL_NUMBER',
+          ),
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'priority',
+            'label' => 'LBL_PRIORITY',
+          ),
+          1 => 
+          array (
+            'name' => 'bug_user_handler_c',
+            'label' => 'LBL_BUG_USER_HANDLER',
+          ),
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'type',
+            'label' => 'LBL_TYPE',
+          ),
+          1 => 
+          array (
+            'name' => 'status',
+            'label' => 'LBL_STATUS',
+          ),
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'bug_user_creator_c',
+            'label' => 'LBL_BUG_USER_CREATOR',
+          ),
+          1 => 
+          array (
+            'name' => 'resolution',
+            'label' => 'LBL_RESOLUTION',
+          ),
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
+            'name' => 'product_category',
+            'label' => 'LBL_PRODUCT_CATEGORY',
+          ),
+          1 => 
+          array (
+            'name' => 'dev_duration_c',
+            'label' => 'LBL_DEV_DURATION',
+          ),
+        ),
+        5 => 
+        array (
+          0 => 
+          array (
+            'name' => 'source',
+            'label' => 'LBL_SOURCE',
+          ),
+          1 => 
+          array (
+            'name' => 'close_date_c',
+            'label' => 'LBL_CLOSE_DATE',
+          ),
+        ),
+        6 => 
+        array (
+          0 => 
+          array (
+            'name' => 'client_c',
+            'label' => 'LBL_CLIENT',
+          ),
+          1 => 
+          array (
+            'name' => 'promised_date_c',
+            'label' => 'LBL_PROMISED_DATE',
+          ),
+        ),
+        7 => 
+        array (
+          0 => 
+          array (
+            'name' => 'linkedticket_c',
+            'label' => 'LBL_LINKEDTICKET',
+          ),
+          1 => 
+          array (
+            'name' => 'due_date_c',
+            'label' => 'LBL_DUE_DATE',
+          ),
+        ),
+        8 => 
+        array (
+          0 => 
+          array (
+            'name' => 'date_entered',
+            'customCode' => '{$fields.date_entered.value} {$APP.LBL_BY} {$fields.created_by_name.value}',
+            'label' => 'LBL_DATE_ENTERED',
+          ),
+          1 => 
+          array (
+            'name' => 'date_modified',
+            'customCode' => '{$fields.date_modified.value} {$APP.LBL_BY} {$fields.modified_by_name.value}',
+            'label' => 'LBL_DATE_MODIFIED',
+          ),
+        ),
+        9 => 
+        array (
+          0 => 
+          array (
+            'name' => 'name',
+            'label' => 'LBL_SUBJECT',
+          ),
+          1 => 
+          array (
+            'name' => 'dev_work_batch_c',
+            'studio' => 'visible',
+            'label' => 'LBL_DEV_WORK_BATCH',
+          ),
+        ),
+        10 => 
+        array (
+          0 => 
+          array (
+            'name' => 'description',
+            'label' => 'LBL_DESCRIPTION',
+          ),
+        ),
+        11 => 
+        array (
+          0 => 
+          array (
+            'name' => 'work_log',
+            'label' => 'LBL_WORK_LOG',
+          ),
+        ),
+        12 => 
+        array (
+          0 => 
+          array (
+            'name' => 'atpcomments_c',
+            'label' => 'LBL_ATPCOMMENTS',
+          ),
+        ),
+        13 => 
+        array (
+          0 => 
+          array (
+            'name' => 'affectedfiles_c',
+            'label' => 'LBL_AFFECTEDFILES',
+          ),
+        ),
+        14 => 
+        array (
+          0 => 
+          array (
+            'name' => 'sqlupdatequery_c',
+            'label' => 'LBL_SQLUPDATEQUERY',
+          ),
+        ),
+        15 => 
+        array (
+          0 => 
+          array (
+            'name' => 'communicatetoclients_c',
+            'studio' => 'visible',
+            'label' => 'LBL_COMMUNICATETOCLIENTS',
+          ),
+          1 => 
+          array (
+            'name' => 'update_to_client_c',
+            'studio' => 'visible',
+            'label' => 'LBL_UPDATE_TO_CLIENT',
+          ),
+        ),
+      ),
+    ),
+  ),
+);
+?>

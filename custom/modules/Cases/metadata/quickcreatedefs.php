@@ -1,0 +1,102 @@
+<?php
+$viewdefs ['Cases'] = 
+array (
+  'QuickCreate' => 
+  array (
+    'templateMeta' => 
+    array (
+      'maxColumns' => '2',
+      'widths' => 
+      array (
+        0 => 
+        array (
+          'label' => '10',
+          'field' => '30',
+        ),
+        1 => 
+        array (
+          'label' => '10',
+          'field' => '30',
+        ),
+      ),
+      'useTabs' => false,
+      'tabDefs' => 
+      array (
+        '' => 
+        array (
+          'newTab' => false,
+          'panelDefault' => 'expanded',
+        ),
+      ),
+    ),
+    'panels' => 
+    array (
+      '' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            'name' => 'name',
+            'displayParams' => 
+            array (
+              'size' => 65,
+              'required' => true,
+            ),
+            'label' => 'LBL_SUBJECT',
+          ),
+          1 => 
+          array (
+            'name' => 'priority',
+            'label' => 'LBL_PRIORITY',
+          ),
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            'name' => 'status',
+            'label' => 'LBL_STATUS',
+          ),
+          1 => 'assigned_user_name',
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            'name' => 'account_name',
+            'label' => 'LBL_ACCOUNT_NAME',
+          ),
+        ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'category_c',
+            'studio' => 'visible',
+            'label' => 'LBL_CATEGORY',
+          ),
+          1 => 
+          array (
+            'name' => 'linked_dev_request_c',
+            'label' => 'LBL_LINKED_DEV_REQUEST',
+          ),
+        ),
+        4 => 
+        array (
+          0 => 
+          array (
+            'name' => 'description',
+            'displayParams' => 
+            array (
+              'rows' => '4',
+              'cols' => '60',
+            ),
+            'nl2br' => true,
+          ),
+        ),
+      ),
+    ),
+  ),
+);
+?>

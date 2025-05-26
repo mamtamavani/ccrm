@@ -1,0 +1,6 @@
+Wed, 15 Jul 2020 09:09:20 +0000 [UpgradeWizard] - setting session variables...
+Wed, 15 Jul 2020 09:09:20 +0000 [UpgradeWizard] - -----------------------------------------------------------------------------
+Wed, 15 Jul 2020 09:09:20 +0000 [UpgradeWizard] - Upgrade started. At start.php
+Wed, 15 Jul 2020 09:09:20 +0000 [UpgradeWizard] - at unlinkUWTempFiles()
+Wed, 15 Jul 2020 09:09:20 +0000 [UpgradeWizard] - finished!
+Wed, 15 Jul 2020 09:09:20 +0000 [UpgradeWizard] - resetting $_SESSION

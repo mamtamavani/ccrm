@@ -1,0 +1,204 @@
+<?php
+$listViewDefs ['Bugs'] = 
+array (
+  'BUG_NUMBER' => 
+  array (
+    'width' => '5%',
+    'label' => 'LBL_LIST_NUMBER',
+    'link' => true,
+    'default' => true,
+  ),
+  'NAME' => 
+  array (
+    'width' => '32%',
+    'label' => 'LBL_LIST_SUBJECT',
+    'default' => true,
+    'link' => true,
+  ),
+  'STATUS' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_LIST_STATUS',
+    'default' => true,
+  ),
+  'ASSIGNED_USER_NAME' => 
+  array (
+    'width' => '9%',
+    'label' => 'LBL_LIST_ASSIGNED_USER',
+    'default' => true,
+    'module' => 'Employees',
+    'id' => 'ASSIGNED_USER_ID',
+    'link' => true,
+    'related_fields' => 
+    array (
+      0 => 'assigned_user_id',
+    ),
+  ),
+  'TYPE' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_LIST_TYPE',
+    'default' => true,
+  ),
+  'PRIORITY' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_LIST_PRIORITY',
+    'default' => true,
+  ),
+  'CLIENT_C' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_CLIENT',
+    'sortable' => false,
+    'default' => true,
+  ),
+  'DUE_DATE_C' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_DUE_DATE',
+    'sortable' => false,
+    'default' => true,
+  ),
+  'RELEASE_NAME' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_FOUND_IN_RELEASE',
+    'default' => false,
+    'related_fields' => 
+    array (
+      0 => 'found_in_release',
+    ),
+    'module' => 'Releases',
+    'id' => 'FOUND_IN_RELEASE',
+    'link' => true,
+  ),
+  'RESOLUTION' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_LIST_RESOLUTION',
+    'default' => false,
+  ),
+  'FIXED_IN_RELEASE_NAME' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_LIST_FIXED_IN_RELEASE',
+    'default' => false,
+    'related_fields' => 
+    array (
+      0 => 'fixed_in_release',
+    ),
+    'module' => 'Releases',
+    'id' => 'FIXED_IN_RELEASE',
+    'link' => true,
+  ),
+  'CLOSE_DATE_C' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_CLOSE_DATE',
+    'sortable' => false,
+    'default' => false,
+  ),
+  'BUG_USER_HANDLER_C' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_BUG_USER_HANDLER',
+    'sortable' => false,
+    'default' => false,
+  ),
+  'SOURCE' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_SOURCE',
+    'sortable' => false,
+    'default' => false,
+  ),
+  'PRODUCT_CATEGORY' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_PRODUCT_CATEGORY',
+    'sortable' => false,
+    'default' => false,
+  ),
+  'DESCRIPTION' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_DESCRIPTION',
+    'sortable' => false,
+    'default' => false,
+  ),
+  'DEV_WORK_BATCH_C' => 
+  array (
+    'type' => 'enum',
+    'default' => false,
+    'studio' => 'visible',
+    'label' => 'LBL_DEV_WORK_BATCH',
+    'sortable' => false,
+    'width' => '10%',
+  ),
+  'CREATED_BY_NAME' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_CREATED',
+    'module' => 'Users',
+    'id' => 'CREATED_BY',
+    'link' => true,
+    'related_fields' => 
+    array (
+      0 => 'created_by',
+    ),
+    'default' => false,
+  ),
+  'LINKEDTICKET_C' => 
+  array (
+    'type' => 'url',
+    'default' => false,
+    'label' => 'LBL_LINKEDTICKET',
+    'width' => '10%',
+  ),
+  'DEV_DURATION_C' => 
+  array (
+    'type' => 'decimal',
+    'default' => false,
+    'label' => 'LBL_DEV_DURATION',
+    'width' => '10%',
+  ),
+  'DATE_MODIFIED' => 
+  array (
+    'width' => '10%',
+    'label' => 'LBL_DATE_MODIFIED',
+    'default' => false,
+  ),
+  'DATE_ENTERED' => 
+  array (
+    'type' => 'datetime',
+    'label' => 'LBL_DATE_ENTERED',
+    'width' => '10%',
+    'default' => false,
+  ),
+  'PROMISED_DATE_C' => 
+  array (
+    'type' => 'date',
+    'default' => false,
+    'label' => 'LBL_PROMISED_DATE',
+    'width' => '10%',
+  ),
+  'SQLUPDATEQUERY_C' => 
+  array (
+    'type' => 'text',
+    'default' => false,
+    'studio' => 'visible',
+    'label' => 'LBL_SQLUPDATEQUERY',
+    'sortable' => false,
+    'width' => '10%',
+  ),
+  'COMMUNICATETOCLIENTS_C' => 
+  array (
+    'type' => 'enum',
+    'default' => false,
+    'studio' => 'visible',
+    'label' => 'LBL_COMMUNICATETOCLIENTS',
+    'width' => '10%',
+  ),
+);
+?>

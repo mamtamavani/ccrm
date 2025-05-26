@@ -1,3 +1,5 @@
 <?php 
-print_r("hello");
+echo "new";
+phpinfo();
+
 ?>

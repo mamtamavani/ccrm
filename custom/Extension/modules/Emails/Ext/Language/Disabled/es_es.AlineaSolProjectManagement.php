@@ -1,0 +1,4 @@
+<?php
+//THIS FILE IS AUTO GENERATED, DO NOT MODIFY
+$mod_strings['LBL_ASOL_PROJECT_ACTIVITIES_EMAILS_FROM_ASOL_PROJECT_TITLE'] = 'AsolProyecto Actividades : AsolProyecto';
+$mod_strings['LBL_ASOL_PROJECTTASK_ACTIVITIES_EMAILS_FROM_ASOL_PROJECTTASK_TITLE'] = 'Actividades : AsolTareasDeProyecto';

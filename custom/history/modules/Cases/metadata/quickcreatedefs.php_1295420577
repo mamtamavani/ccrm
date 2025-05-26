@@ -1,0 +1,71 @@
+<?php
+// created: 2011-01-19 08:53:45
+$viewdefs['Cases']['QuickCreate'] = array (
+  'templateMeta' => 
+  array (
+    'maxColumns' => '2',
+    'widths' => 
+    array (
+      0 => 
+      array (
+        'label' => '10',
+        'field' => '30',
+      ),
+      1 => 
+      array (
+        'label' => '10',
+        'field' => '30',
+      ),
+    ),
+  ),
+  'panels' => 
+  array (
+    'default' => 
+    array (
+      0 => 
+      array (
+        0 => 
+        array (
+          'name' => 'name',
+          'displayParams' => 
+          array (
+            'size' => 65,
+            'required' => true,
+          ),
+          'label' => 'LBL_SUBJECT',
+        ),
+        1 => 
+        array (
+          'name' => 'priority',
+          'label' => 'LBL_PRIORITY',
+        ),
+      ),
+      1 => 
+      array (
+        0 => 
+        array (
+          'name' => 'status',
+          'label' => 'LBL_STATUS',
+        ),
+        1 => 
+        array (
+          'name' => 'account_name',
+          'label' => 'LBL_ACCOUNT_NAME',
+        ),
+      ),
+      2 => 
+      array (
+        0 => 
+        array (
+          'name' => 'resolution',
+          'label' => 'LBL_RESOLUTION',
+        ),
+      ),
+      3 => 
+      array (
+        0 => 'assigned_user_name',
+      ),
+    ),
+  ),
+);
+?>
