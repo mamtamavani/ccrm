@@ -578,6 +578,53 @@ $mod_strings = array (
     'LBL_HIDEOPTIONS' => 'Hide Options',
     'LBL_SHOWOPTIONS' => 'Show Options',
 
+	//Email verification 
+	'LBL_EMAILVERIFY'                    => 'Verify your email address',
+	'LBL_VERIFICATION_BUTTON'            => 'Send verification link',
+	'LBL_EMAILVERIFY_MESSAGE'            => 'Our system is unable to send the two-factor authentication code to you since email address is not configured in your profile to receive a two-factor authentication code, please verify your email address below',
+	'LBL_EMAILVERIFY_NOTES'              => 'Important notice make sure you enter a valid and available email address. Once it is verified you canot change it',
+	'LBL_EMAILVERIFY_THANKYOU'           => 'Thank you for logging in',
+	'LBL_EMAILVERIFY_MESSAGE1'           => 'We have sent an email verification link to',
+	'LBL_EMAILVERIFY_MESSAGE2'           => 'Please click on the link to verify your email address and complete verification process',
+	'LBL_EMAILVERIFY_MESSAGE3'           => 'Please check your inbox complete the verification process',
+	'LBL_EMAILVERIFY_MESSAGE4'           => 'Once you have verified your email address, you will be able to log in to your account and start using all of the features that has offered to you',
+	'LBL_EMAILVERIFY_MESSAGE5'           => 'If you do not receive the email verification link, please check your spam folder or try again later',
+	'LBL_EMAILVERIFY_MESSAGE6'           => 'Thank you for your patience',
+	'LBL_BACK_TO_LOGIN'                  => 'Back to login',
+	'LBL_NOT_FIND_CODE'                  => 'Canont find you code',
+	'LBL_CHECK_SPAM_FOLDER'              => 'Check your spam folder',
+	'LBL_EMAIL_VERIFIED'                 => 'Congratulations your email address has been verified',
+	'LBL_EMAIL_VERIFIED_LOGIN'           => 'You can now log in to your account and start using all the features that Sugar CRM has to offer',
+	'LBL_EMAIL_VERIFIED_THANKYOU'        => 'Thank you for trusting us with your personal information',
+	'LBL_EMAIL_EXPIRED'                  => 'Email verification link expired',
+	'LBL_EMAIL_EXPIRED_APOLOGIZE'        => 'We apologize that your email verification link has expired please click on the button below to request a new link',
+	'LBL_EMAIL_EXPIRED_TROUBLE'          => 'If you are still having trouble verifying your email address, please contact us for assistance',
+	'LBL_EMAIL_LINK_INCORRECT'           => 'Email verification link incorrect',
+	'LBL_EMAIL_LINK_INCORRECT_APOLOGIZE' => 'We apologize that the email verification link you clicked on is incorrect. Please click on the button below to request a new link',
+	'LBL_EMAIL_TRY_LATER'                => 'Please try again later if something has gone wrong',
+	
+	// Two factor authentication
+	'LBL_TWO_FACTOR_AUTHENATICATION'       		  => 'Two factor authentication required',
+	'LBL_TWO_FACTOR_AUTHENATICATION_MAIL'  		  => 'Enter the code that we sent to registered mail',
+	'LBL_TWO_FACTOR_AUTHENATICATION_CODE_EXPIRES' => 'The code expires shortly, so please enter it soon',
+	'LBL_TWO_FACTOR_CONFIRM_CODE'                 => 'Confirm code',
+	'LBL_TWO_FACTOR_RESEND_CODE'  				  => 'Resend code',
+
+	// Email verification link send
+	'LBL_HI'  => 'Hi',
+	'LBL_SEND_LINK_CLICK'  			  => 'to complete your login process please verify your email address by clicking the link below',
+	'LBL_SEND_MAIL_VEFIFY' 			  => 'Verify your mail',
+	'LBL_SEND_MAIL_VERIFIED_MESSAGE1' => 'Once you have verified your email address you will be able to log in to your account and start using all of the features',
+	'LBL_SEND_MAIL_VERIFIED_MESSAGE2' => 'If you have any questions or problems please don\'t hesitate to contact us',
+	'LBL_SEND_MAIL_THANKS'            => 'Thanks,',
+	'LBL_SEND_MAIL_CHECKER'           => 'The Sugar CRM Team',
+
+	// Send verification code
+	'LBL_DEAR' 				   => 'Dear',
+	'LBL_USE_OTP' 			   => 'Use OTP',
+	'LBL_USE_OTP_VALID'        => 'to access your checker account this otp is valid fo',
+	'LBL_USE_OTP_MINUTES'      => 'minutes',
+	'LBL_USE_OTP_DO_NOT_SHARE' => 'Please do not share your OTP with anyone to avoid fraudulent activities.',
 ); // END STRINGS DEFS
 
 ?>

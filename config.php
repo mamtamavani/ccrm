@@ -1,5 +1,5 @@
 <?php
-// created: 2020-12-11 11:03:53
+// created: 2025-05-29 08:46:28
 $sugar_config = array (
   'addAjaxBannedModules' => 
   array (
@@ -67,8 +67,11 @@ $sugar_config = array (
     'db_host_name' => 'localhost',
     'db_user_name' => 'root',
     'db_password' => '',
-    'db_name' => 'ccrm',
+    'db_name' => 'sugarcrm3',
     'db_type' => 'mysql',
+    'db_host_instance' => 'SQLEXPRESS',
+    'db_port' => '',
+    'db_manager' => 'MysqliManager',
   ),
   'dbconfigoption' => 
   array (
@@ -209,8 +212,10 @@ $sugar_config = array (
   'default_time_format' => 'H:i',
   'default_user_is_admin' => false,
   'default_user_name' => '',
+  'demoData' => 'yes',
   'developerMode' => false,
   'disableAjaxUI' => true,
+  'disable_convert_lead' => false,
   'disable_export' => false,
   'disable_persistent_connections' => 'false',
   'disabled_themes' => '',
@@ -228,7 +233,7 @@ $sugar_config = array (
   'export_delimiter' => ',',
   'export_excel_compatible' => false,
   'history_max_viewed' => 10,
-  'host_name' => 'www.checker-soft.com',
+  'host_name' => NULL,
   'http_referer' => 
   array (
     'list' => 
@@ -250,6 +255,12 @@ $sugar_config = array (
       14 => '52.30.107.122',
       15 => 'ccrm1.checker-soft.com',
       16 => 'ccrm.checker-soft.com',
+      17 => '52.30.107.122',
+      18 => 'ccrm1.checker-soft.com',
+      19 => 'ccrm.checker-soft.com',
+      20 => '52.30.107.122',
+      21 => 'ccrm1.checker-soft.com',
+      22 => 'ccrm.checker-soft.com',
     ),
   ),
   'i18n_test' => false,
@@ -290,7 +301,7 @@ $sugar_config = array (
       'dateFormat' => '%c',
       'maxSize' => '10MB',
       'maxLogs' => 10,
-      'suffix' => '%m_%Y',
+      'suffix' => '',
     ),
   ),
   'login_nav' => false,
@@ -352,11 +363,11 @@ $sugar_config = array (
   'session_dir' => '',
   'showDetailData' => true,
   'showThemePicker' => true,
-  'site_url' => 'ccrm.checker-soft.com',
+  'site_url' => 'localhost/ccrm',//ccrm.checker-soft.com
   'slow_query_time_msec' => '100',
   'stack_trace_errors' => false,
   'sugar_version' => '6.5.16',
-  'sugarbeet' => false,
+  'sugarbeet' => true,
   'time_formats' => 
   array (
     'H:i' => '23:00',
@@ -374,7 +385,7 @@ $sugar_config = array (
   'tmp_dir' => 'cache/xml/',
   'tracker_max_display_length' => 15,
   'translation_string_prefix' => false,
-  'unique_key' => 'd88d85aac8b139e6a59b95f74cc0f454',
+  'unique_key' => '37793fc4e05cac56db4184ad05e772d7',
   'upload_badext' => 
   array (
     0 => 'php',

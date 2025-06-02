@@ -1,0 +1,148 @@
+06/02/25 06:26:34 [6812][-none-][FATAL]  Query Failed: 
+				SELECT asol_events.*
+				FROM asol_events
+				INNER JOIN asol_proces_asol_events_c ON (asol_proces_asol_events_c.asol_procea8ca_events_idb = asol_events.id AND asol_proces_asol_events_c.deleted = 0)
+				INNER JOIN asol_process ON (asol_process.id = asol_proces_asol_events_c.asol_proce6f14process_ida AND asol_process.deleted = 0)
+				WHERE (asol_process.status = 'active' AND asol_process.trigger_module = 'Users' AND asol_events.trigger_event = 'after_login' AND asol_events.trigger_type = 'logic_hook' AND asol_events.deleted = 0) 							  
+		    	ORDER BY
+					CASE asol_events.type
+						WHEN 'initialize' THEN 1
+					    WHEN 'start' THEN 2
+					    WHEN 'intermediate' THEN 3
+					    WHEN 'cancel' THEN 4
+					    ELSE 5
+					END
+			: MySQL error 1146: Table 'sugarcrm3.asol_events' doesn't exist
+06/02/25 06:33:54 [6812][-none-][FATAL]  Query Failed: 
+				SELECT asol_events.*
+				FROM asol_events
+				INNER JOIN asol_proces_asol_events_c ON (asol_proces_asol_events_c.asol_procea8ca_events_idb = asol_events.id AND asol_proces_asol_events_c.deleted = 0)
+				INNER JOIN asol_process ON (asol_process.id = asol_proces_asol_events_c.asol_proce6f14process_ida AND asol_process.deleted = 0)
+				WHERE (asol_process.status = 'active' AND asol_process.trigger_module = 'Users' AND asol_events.trigger_event = 'after_login' AND asol_events.trigger_type = 'logic_hook' AND asol_events.deleted = 0) 							  
+		    	ORDER BY
+					CASE asol_events.type
+						WHEN 'initialize' THEN 1
+					    WHEN 'start' THEN 2
+					    WHEN 'intermediate' THEN 3
+					    WHEN 'cancel' THEN 4
+					    ELSE 5
+					END
+			: MySQL error 1146: Table 'sugarcrm3.asol_events' doesn't exist
+06/02/25 06:38:31 [6812][-none-][FATAL]  Query Failed: 
+				SELECT asol_events.*
+				FROM asol_events
+				INNER JOIN asol_proces_asol_events_c ON (asol_proces_asol_events_c.asol_procea8ca_events_idb = asol_events.id AND asol_proces_asol_events_c.deleted = 0)
+				INNER JOIN asol_process ON (asol_process.id = asol_proces_asol_events_c.asol_proce6f14process_ida AND asol_process.deleted = 0)
+				WHERE (asol_process.status = 'active' AND asol_process.trigger_module = 'Users' AND asol_events.trigger_event = 'before_logout' AND asol_events.trigger_type = 'logic_hook' AND asol_events.deleted = 0) 							  
+		    	ORDER BY
+					CASE asol_events.type
+						WHEN 'initialize' THEN 1
+					    WHEN 'start' THEN 2
+					    WHEN 'intermediate' THEN 3
+					    WHEN 'cancel' THEN 4
+					    ELSE 5
+					END
+			: MySQL error 1146: Table 'sugarcrm3.asol_events' doesn't exist
+06/02/25 06:46:23 [6812][-none-][FATAL]  Query Failed: 
+				SELECT asol_events.*
+				FROM asol_events
+				INNER JOIN asol_proces_asol_events_c ON (asol_proces_asol_events_c.asol_procea8ca_events_idb = asol_events.id AND asol_proces_asol_events_c.deleted = 0)
+				INNER JOIN asol_process ON (asol_process.id = asol_proces_asol_events_c.asol_proce6f14process_ida AND asol_process.deleted = 0)
+				WHERE (asol_process.status = 'active' AND asol_process.trigger_module = 'Users' AND asol_events.trigger_event = 'before_logout' AND asol_events.trigger_type = 'logic_hook' AND asol_events.deleted = 0) 							  
+		    	ORDER BY
+					CASE asol_events.type
+						WHEN 'initialize' THEN 1
+					    WHEN 'start' THEN 2
+					    WHEN 'intermediate' THEN 3
+					    WHEN 'cancel' THEN 4
+					    ELSE 5
+					END
+			: MySQL error 1146: Table 'sugarcrm3.asol_events' doesn't exist
+06/02/25 06:51:25 [6812][-none-][FATAL] Error converting lead:  Query Failed: UPDATE users set 
+						TwoFactorAuthenticationCodeExpiredAt= '2025-06-02 06:51:25'
+						where id=: MySQL error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 3
+06/02/25 07:01:28 [6812][-none-][FATAL]  Query Failed: 
+				SELECT asol_events.*
+				FROM asol_events
+				INNER JOIN asol_proces_asol_events_c ON (asol_proces_asol_events_c.asol_procea8ca_events_idb = asol_events.id AND asol_proces_asol_events_c.deleted = 0)
+				INNER JOIN asol_process ON (asol_process.id = asol_proces_asol_events_c.asol_proce6f14process_ida AND asol_process.deleted = 0)
+				WHERE (asol_process.status = 'active' AND asol_process.trigger_module = 'Users' AND asol_events.trigger_event = 'before_logout' AND asol_events.trigger_type = 'logic_hook' AND asol_events.deleted = 0) 							  
+		    	ORDER BY
+					CASE asol_events.type
+						WHEN 'initialize' THEN 1
+					    WHEN 'start' THEN 2
+					    WHEN 'intermediate' THEN 3
+					    WHEN 'cancel' THEN 4
+					    ELSE 5
+					END
+			: MySQL error 1146: Table 'sugarcrm3.asol_events' doesn't exist
+06/02/25 07:01:50 [6812][-none-][FATAL] Error converting lead:  Query Failed: UPDATE users set 
+						TwoFactorAuthenticationCodeExpiredAt= '2025-06-02 07:01:50'
+						where id=: MySQL error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 3
+06/02/25 07:04:32 [6812][-none-][FATAL] Error converting lead:  Query Failed: UPDATE users set 
+						TwoFactorAuthenticationCodeExpiredAt= '2025-06-02 07:04:32'
+						where id=: MySQL error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 3
+06/02/25 07:08:48 [6812][-none-][FATAL]  Query Failed: 
+				SELECT asol_events.*
+				FROM asol_events
+				INNER JOIN asol_proces_asol_events_c ON (asol_proces_asol_events_c.asol_procea8ca_events_idb = asol_events.id AND asol_proces_asol_events_c.deleted = 0)
+				INNER JOIN asol_process ON (asol_process.id = asol_proces_asol_events_c.asol_proce6f14process_ida AND asol_process.deleted = 0)
+				WHERE (asol_process.status = 'active' AND asol_process.trigger_module = 'Users' AND asol_events.trigger_event = 'before_logout' AND asol_events.trigger_type = 'logic_hook' AND asol_events.deleted = 0) 							  
+		    	ORDER BY
+					CASE asol_events.type
+						WHEN 'initialize' THEN 1
+					    WHEN 'start' THEN 2
+					    WHEN 'intermediate' THEN 3
+					    WHEN 'cancel' THEN 4
+					    ELSE 5
+					END
+			: MySQL error 1146: Table 'sugarcrm3.asol_events' doesn't exist
+06/02/25 07:28:14 [6812][-none-][FATAL]  Query Failed: 
+				SELECT asol_events.*
+				FROM asol_events
+				INNER JOIN asol_proces_asol_events_c ON (asol_proces_asol_events_c.asol_procea8ca_events_idb = asol_events.id AND asol_proces_asol_events_c.deleted = 0)
+				INNER JOIN asol_process ON (asol_process.id = asol_proces_asol_events_c.asol_proce6f14process_ida AND asol_process.deleted = 0)
+				WHERE (asol_process.status = 'active' AND asol_process.trigger_module = 'Users' AND asol_events.trigger_event = 'before_logout' AND asol_events.trigger_type = 'logic_hook' AND asol_events.deleted = 0) 							  
+		    	ORDER BY
+					CASE asol_events.type
+						WHEN 'initialize' THEN 1
+					    WHEN 'start' THEN 2
+					    WHEN 'intermediate' THEN 3
+					    WHEN 'cancel' THEN 4
+					    ELSE 5
+					END
+			: MySQL error 1146: Table 'sugarcrm3.asol_events' doesn't exist
+06/02/25 07:30:01 [6812][-none-][FATAL] Error in update emailverifyCode of users Query Failed: UPDATE users set 
+				emailVerify='N', 
+				emailverifyCode='b6afb7afe424c43e719177592c4b1329cd03ba251758ea9c90fca58cfcbf8503', 
+				emailverifyCodeExpiredAt='2025-06-02 08:30:01' where id=: MySQL error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 4
+06/02/25 09:09:28 [6812][-none-][FATAL]  Query Failed: 
+				SELECT asol_events.*
+				FROM asol_events
+				INNER JOIN asol_proces_asol_events_c ON (asol_proces_asol_events_c.asol_procea8ca_events_idb = asol_events.id AND asol_proces_asol_events_c.deleted = 0)
+				INNER JOIN asol_process ON (asol_process.id = asol_proces_asol_events_c.asol_proce6f14process_ida AND asol_process.deleted = 0)
+				WHERE (asol_process.status = 'active' AND asol_process.trigger_module = 'Users' AND asol_events.trigger_event = 'before_logout' AND asol_events.trigger_type = 'logic_hook' AND asol_events.deleted = 0) 							  
+		    	ORDER BY
+					CASE asol_events.type
+						WHEN 'initialize' THEN 1
+					    WHEN 'start' THEN 2
+					    WHEN 'intermediate' THEN 3
+					    WHEN 'cancel' THEN 4
+					    ELSE 5
+					END
+			: MySQL error 1146: Table 'sugarcrm3.asol_events' doesn't exist
+06/02/25 10:58:57 [6812][-none-][FATAL]  Query Failed: 
+				SELECT asol_events.*
+				FROM asol_events
+				INNER JOIN asol_proces_asol_events_c ON (asol_proces_asol_events_c.asol_procea8ca_events_idb = asol_events.id AND asol_proces_asol_events_c.deleted = 0)
+				INNER JOIN asol_process ON (asol_process.id = asol_proces_asol_events_c.asol_proce6f14process_ida AND asol_process.deleted = 0)
+				WHERE (asol_process.status = 'active' AND asol_process.trigger_module = 'Users' AND asol_events.trigger_event = 'before_logout' AND asol_events.trigger_type = 'logic_hook' AND asol_events.deleted = 0) 							  
+		    	ORDER BY
+					CASE asol_events.type
+						WHEN 'initialize' THEN 1
+					    WHEN 'start' THEN 2
+					    WHEN 'intermediate' THEN 3
+					    WHEN 'cancel' THEN 4
+					    ELSE 5
+					END
+			: MySQL error 1146: Table 'sugarcrm3.asol_events' doesn't exist

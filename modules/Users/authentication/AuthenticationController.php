@@ -214,4 +214,178 @@ class AuthenticationController
 		LogicHook::initialize();
 		$GLOBALS['logic_hook']->call_custom_logic('Users', 'after_logout');
 	}
+
+
+	public function SendEmailLink($email)
+	{
+		global $sugar_config,$db;
+		require_once('modules/Users/language/en_us.lang.php');
+		$mod_strings=return_module_language('','Users', true);
+		
+		require_once("include/SugarPHPMailer.php");
+		global $locale;
+		$emailObj = new Email();
+        $defaults = $emailObj->getSystemDefaultEmail();
+		$emailVerifyLinkExpireTime=60;
+		$notify_mail = new SugarPHPMailer();
+		$notify_mail->CharSet = $sugar_config['default_charset'];
+		$notify_mail->AddAddress($email);
+        $notify_mail->Subject = 'verify your email address for '. $defaults['name'];
+
+		$data['user-name'] = $_SESSION['login_user_name'] ? $_SESSION['login_user_name'] : '';
+		$data['companyName'] = "Sugar CRM";
+		$data['mod'] = $mod_strings;
+		$data['emailVerifyLinkExpireTime'] = $emailVerifyLinkExpireTime;
+		$data['emailverifyCode'] = hash("sha256", rand());
+		$data['baseUrl'] = ($_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://".$sugar_config['site_url'];
+        $notify_mail->isHTML(true);
+        $notify_mail->AddEmbeddedImage('custom/themes/default/images/code_banner.png', 'img1', 'code_banner.png', 'base64', 'image/png');
+		$notify_mail->AddEmbeddedImage('custom/themes/default/images/company_logo.png', 'img2','company_logo.png','base64', 'image/png');
+		$data['verificationlink'] = $data['baseUrl']."/index.php?action=EmailVerificationSend&module=Users&Verification=".$data['emailverifyCode'];
+        $notify_mail->Body = render_email('modules/Users/EmailVerification/emailVerificationLink.phtml', $data);
+		$notify_mail->Encoding = 'base64';
+        $notify_mail->ContentType = 'text/html; charset=UTF-8';
+        $notify_mail->setMailerForSystem();
+        $notify_mail->From =  $defaults['email'];
+        $notify_mail->FromName = 'Sugar Authentication';
+
+        if($notify_mail->Send()) {
+			$query = "UPDATE users set 
+				emailVerify='N', 
+				emailverifyCode='".$data["emailverifyCode"]."', 
+				emailverifyCodeExpiredAt='". date('Y-m-d H:i:s', strtotime("+" . $data['emailVerifyLinkExpireTime'] . " minutes", time())) ."' where id=".$_SESSION['login_user_id']."";
+			$db->query($query,true,"Error in update emailverifyCode of users");
+
+			$updateEmail = " UPDATE email_addresses ea
+				JOIN email_addr_bean_rel eabl 
+				ON ea.id = eabl.email_address_id 
+				AND eabl.bean_module = 'Users' 
+				AND eabl.primary_address = 1 
+				AND eabl.deleted = 0
+				JOIN users usr 
+				ON eabl.bean_id = usr.id
+				SET ea.email_address = '$email', ea.email_address_caps = '".strtoupper($email)."'
+				WHERE usr.id = ".$_SESSION['login_user_id']."";
+			$db->query($updateEmail,true,"Error in update email of email_addresses");
+			return true;
+        }
+		return false;
+	}
+
+	function verificationAction($verificationCode) {
+		global $db;
+		$query = "SELECT us.id, us.emailverifyCodeExpiredAt FROM users us
+			WHERE us.emailverifyCode = '$verificationCode'";
+		$result = $db->limitQuery($query,0,1,false);
+		if(!empty($result)) {
+			$data = $db->fetchByAssoc($result);
+			if(count($data) != 0) {
+				$currentTime = new DateTime(strftime('%Y-%m-%d %H:%M:%S', time()));
+				$expriedLinkTime = new DateTime($data['emailverifyCodeExpiredAt']);
+				if($currentTime < $expriedLinkTime){ 
+					$query = "UPDATE users set 
+						emailVerify='Y'
+						where id=".$data['id']."";
+					if($db->query($query,true,"Error converting lead: ")){
+						return 'verified';
+					}
+					return 'wrong';
+				}
+				return 'linkexpried';
+			}
+		}
+	}
+
+	function emailMasking($email){
+		list($username, $domain) = explode('@', $email);
+		list($domain, $domainEntity) = explode('.', $domain);
+		$maskedUsername = substr($username, 0, 2);
+		$maskedDomain = substr($domain, 0, 2);
+		$maskedUsername .= str_repeat('*', strlen($username) - 2);
+		$maskedDomain .= str_repeat('*', strlen($domain) - 2);
+		$maskedEmail = $maskedUsername . '@' . $maskedDomain.".". $domainEntity;
+		return $maskedEmail;
+	}
+
+
+	function getAuthenticationCodeDetails($user_id) {
+		global $db;
+		$query = "SELECT usr.* FROM users usr WHERE usr.id = '$user_id'";
+		$result = $db->limitQuery($query,0,1,false);
+		if(!empty($result)) {
+			return $db->fetchByAssoc($result);
+		}
+	}
+
+	function checkVerificationCodeVaildOrNot($UserID, $verificationCode) {
+		global $db;
+		$query = "SELECT us.id, us.TwoFactorAuthenticationCodeExpiredAt FROM users us
+			WHERE us.TwoFactorAuthenticationCode = '$verificationCode'";
+			
+		$result = $db->limitQuery($query,0,1,false);
+		if(!empty($result)) {
+			$data = $db->fetchByAssoc($result);
+			
+			if($data && count($data) != 0) {
+				$currentTime = new DateTime(strftime('%Y-%m-%d %H:%M:%S', time()));
+				$expriedLinkTime = new DateTime($data['TwoFactorAuthenticationCodeExpiredAt']);
+				if($expriedLinkTime >= $currentTime){ 
+					$query = "UPDATE users set 
+						TwoFactorAuthenticationCodeExpiredAt= '".strftime('%Y-%m-%d %H:%M:%S', time())."'
+						where id=".$data['id']."";
+					if($db->query($query,true,"Error converting lead: ")){
+						return 'vaildCode';
+					}
+				}
+				return 'codeExpired';
+			}
+			return 'invaildCode';
+		}
+	}
+
+	function codeSend($user_id, $email){
+		global $db, $sugar_config;
+		require_once('modules/Users/language/en_us.lang.php');
+		$mod_strings=return_module_language('','Users', true);
+		$emailObj = new Email();
+        $defaults = $emailObj->getSystemDefaultEmail();
+		$emailVerifyLinkExpireTime=60;
+		$notify_mail = new SugarPHPMailer();
+		$notify_mail->CharSet = $sugar_config['default_charset'];
+		$notify_mail->AddAddress($email);
+        $notify_mail->Subject = 'Sugar CRM protect your account with 2fa';
+		$data['user-name'] = $_SESSION['login_user_name'] ? $_SESSION['login_user_name'] : '';
+		$data['companyTitle'] = "Sugar CRM";
+		$data['mod'] = $mod_strings;
+		$data['twoFactorAuthenticationCodeExpireTime'] = 6;
+		$data['authentication-code'] = rand(100000, 999999);
+		$notify_mail->isHTML(true);
+		$data['baseUrl'] = ($_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://".$sugar_config['site_url'];
+		$notify_mail->AddEmbeddedImage('custom/themes/default/images/code_banner.png', 'img1','code_banner.png','base64', 'image/png');
+		$notify_mail->AddEmbeddedImage('custom/themes/default/images/company_logo.png', 'img2','company_logo.png','base64', 'image/png');
+        $notify_mail->Body = render_email('modules/Users/EmailVerification/two-factor-authentication.phtml', $data);
+        $notify_mail->Encoding = 'base64';
+        $notify_mail->ContentType = 'text/html; charset=UTF-8';
+        $notify_mail->setMailerForSystem();
+		
+        $notify_mail->From =  $defaults['email'];
+        $notify_mail->FromName = 'Sugar Authentication';
+
+        if($notify_mail->Send()) {
+			$query = "UPDATE users set 
+				TwoFactorAuthenticationCode = ".$data["authentication-code"].", 
+				TwoFactorAuthenticationCodeExpiredAt = '". date('Y-m-d H:i:s', strtotime("+" . $data['twoFactorAuthenticationCodeExpireTime'] . " minutes", time())) ."' 
+				where id=".$_SESSION['login_user_id']."";
+			$db->query($query,true,"Error in update emailverifyCode of users");
+		}
+	}
 }
+
+function render_email($template, $data) {
+		ob_start();
+		include $template;
+		$var=ob_get_contents(); 
+		ob_end_clean();
+		return $var;
+	}
+

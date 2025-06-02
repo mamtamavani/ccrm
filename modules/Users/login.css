@@ -105,3 +105,76 @@ input[type="text"], input[type="password"], textarea {
 	padding-top: 0px;
 }
 
+.form-subtitle {
+	font-size: 14px;
+    text-align: left;
+    font-family: Roboto, sans-serif;
+}
+
+.form-small {
+	text-align: left;
+    font-family: Roboto, sans-serif;
+}
+
+.back-to-login-btn{
+    background-color: #4e8ccf; 
+    border: none;
+    color: white !important;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none !important;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0px;
+    border-radius: 5px;
+	background-image: url();
+}
+
+.form-code .email-input {
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    width: 100%;
+    height: auto;
+    color: #666;
+    text-align: left;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 10px;
+}  
+
+.text-danger {
+    color: #EC1C24 !important;
+}
+
+.error{
+    margin-bottom: 10px;
+}
+
+.form-countdown {
+    color: #666;
+    font-size: 24px;
+    line-height: 187.5%;
+    letter-spacing: 1.2px;
+}
+
+.form-code .digit-input {
+	border-radius: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	width: 50px !important;
+	height: 55px;
+	flex-shrink: 0;
+	color: #666;
+	text-align: center;
+	font-size: 40px;
+}
+
+.form-code {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+.resend-btn-disabled {
+    pointer-events: none;
+    color: #666;
+  }
+

@@ -105,7 +105,7 @@ class SugarAuthenticateUser{
 			$GLOBALS['log']->fatal('SECURITY: User authentication for '.$name.' failed');
 			return false;
 		}
-		$this->loadUserOnSession($user_id);
+		
 		return true;
 	}
 	/**
@@ -130,6 +130,91 @@ class SugarAuthenticateUser{
 
 	}
 
+	/**
+	 * Check if a user email is verified or not
+	 *
+	 * @param STRING $user_id
+	 * @return boolean
+	 */
+	function verifyUserEmail($user_id) {
+		global $db;
+		
+		if(!empty($user_id)) {
+			$userData = $this->getUserEmailData($user_id);
+			if(!empty($userData)) {
+				$_SESSION['login_user_email'] = $userData['email_address'];
+				if($userData['emailVerify'] == 'Y') {
+					return true;
+				}
+			}
+		}	
+		return false;
+	}
+
+
+	function verifyauthenticationcode($user_id) {
+		global $db, $sugar_config;
+		require_once('modules/Users/language/en_us.lang.php');
+		$mod_strings=return_module_language('','Users', true);
+
+		$userData = $this->getUserEmailData($user_id);
+		$emailObj = new Email();
+        $defaults = $emailObj->getSystemDefaultEmail();
+		$emailVerifyLinkExpireTime=60;
+		$notify_mail = new SugarPHPMailer();
+		$notify_mail->CharSet = $sugar_config['default_charset'];
+		$notify_mail->AddAddress($userData['email_address']);
+        $notify_mail->Subject = 'Sugar CRM protect your account with 2fa';
+		$data['user-name'] = $_SESSION['login_user_name'] ? $_SESSION['login_user_name'] : '';
+		$data['companyTitle'] = "Sugar CRM";
+		$data['mod'] = $mod_strings;
+		$data['twoFactorAuthenticationCodeExpireTime'] = 6;
+		$data['authentication-code'] = rand(100000, 999999);
+		$notify_mail->isHTML(true);
+		$data['baseUrl'] = ($_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://".$sugar_config['site_url'];
+		$notify_mail->AddEmbeddedImage('custom/themes/default/images/code_banner.png', 'img1','code_banner.png','base64', 'image/png');
+		$notify_mail->AddEmbeddedImage('custom/themes/default/images/company_logo.png', 'img2','company_logo.png','base64', 'image/png');
+        $notify_mail->Body = render_email('modules/Users/EmailVerification/two-factor-authentication.phtml', $data);
+        $notify_mail->Encoding = 'base64';
+        $notify_mail->ContentType = 'text/html; charset=UTF-8';
+        $notify_mail->setMailerForSystem();
+		
+        $notify_mail->From =  $defaults['email'];
+        $notify_mail->FromName = 'Sugar Authentication';
+
+        if($notify_mail->Send()) {
+			$query = "UPDATE users set 
+				TwoFactorAuthenticationCode = ".$data["authentication-code"].", 
+				TwoFactorAuthenticationCodeExpiredAt = '". date('Y-m-d H:i:s', strtotime("+" . $data['twoFactorAuthenticationCodeExpireTime'] . " minutes", time())) ."' 
+				where id=".$_SESSION['login_user_id']."";
+			$db->query($query,true,"Error in update emailverifyCode of users");
+		}
+		return $userData['email_address'];
+	}
+
+
+	/**
+	 * Get user email
+	 *
+	 * @param STRING $user_id
+	 * @return STRING data - used for loading the user
+	 */
+	function getUserEmailData($user_id) {
+		global $db;
+		if(!empty($user_id)) {
+			$user_id = $db->quote($user_id);
+			$query = "SELECT usr.*, ea.email_address FROM users usr
+				LEFT JOIN email_addr_bean_rel eabl  ON eabl.bean_id = usr.id AND eabl.bean_module = 'Users' and eabl.primary_address = 1 and eabl.deleted=0 
+				LEFT JOIN email_addresses ea ON (ea.id = eabl.email_address_id)
+				WHERE usr.id = '$user_id'
+			";
+			$result = $db->limitQuery($query,0,1,false);
+			if(!empty($result)) {
+				return $db->fetchByAssoc($result);
+			}
+			return '';
+		}	
+	}
 }
 
 ?>

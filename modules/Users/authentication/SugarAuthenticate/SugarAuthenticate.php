@@ -84,9 +84,42 @@ class SugarAuthenticate{
 		$_SESSION['waiting_error']='';
 		$_SESSION['hasExpiredPassword']='0';
 		if ($this->userAuthenticate->loadUserOnLogin($username, $password, $fallback, $PARAMS)) {
-			echo "<pre>";
-			print_r(["if", $password]);
-			die();
+			$_SESSION['login_user_name'] = $username;
+			$_SESSION['login_password'] = $password;
+			$_SESSION['login_user_id'] = $usr_id;
+			$isValidRememberMe = false;
+			$isValidUserId = false;
+			$isVerificationSend = true;
+			unset($_COOKIE['73f9d653f1968655a22d4d12e91febc2']);
+			unset($_COOKIE['a5e71093a9e6a24deb0bb620220527dd']);
+			if(isset($_COOKIE[md5('remember_me_'.$usr_id)])){
+				$rememberMeHash = password_hash(md5($usr_id . $r['CompanyLink']), PASSWORD_DEFAULT);
+				$isValidRememberMe = password_verify(md5($usr_id . $r['CompanyLink']), $_COOKIE[md5('remember_me_'.$usr_id)]);	
+			}
+
+			if(isset($_COOKIE[md5('user_id_'.$usr_id)])){
+				$userIdHash = password_hash(md5("user_id_".$usr_id . $r['CompanyLink']), PASSWORD_DEFAULT);
+				$isValidUserId = password_verify(md5('user_id_'.$usr_id . $r['CompanyLink']), $_COOKIE[md5('user_id_'.$usr_id)]);
+			}
+			
+			if(isset($_COOKIE[md5('remember_me_'.$usr_id)]) && isset($_COOKIE[md5('user_id_'.$usr_id)]) && $isValidRememberMe && $isValidUserId){
+				$isVerificationSend = false;
+			}
+			if(!$this->userAuthenticate->verifyUserEmail($usr_id)) {
+				// email verification 
+				$GLOBALS['module'] = 'Users';
+				$GLOBALS['action'] = 'emailVerification';
+				header("Location: index.php?module=Users&action=emailVerification");
+				exit();
+			} elseif($isVerificationSend) {
+				$email = $this->userAuthenticate->verifyauthenticationcode($usr_id);
+				$_SESSION['verification_email'] = $email;
+				$GLOBALS['module'] = 'Users';
+				$GLOBALS['action'] = 'verifyauthenticationcode';
+				header("Location: index.php?module=Users&action=verifyauthenticationcode");
+				exit();
+			}
+
 			require_once('modules/Users/password_utils.php');
 			if(hasPasswordExpired($username)) {
 				$_SESSION['hasExpiredPassword'] = '1';
@@ -96,6 +129,8 @@ class SugarAuthenticate{
 				$usr->setPreference('loginfailed','0');
 				$usr->savePreferencesToDB();
 			}
+			$this->userAuthenticate->loadUserOnSession($usr_id);
+
 			return $this->postLoginAuthenticate();
 
 		}
